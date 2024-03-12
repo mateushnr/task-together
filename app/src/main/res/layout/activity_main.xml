@@ -4,51 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray1"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/clockImg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:orientation="vertical"
         android:background="@drawable/header"
-        >
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/clockImg"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"/>
-        
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_logo_description"
+            android:src="@drawable/clockImg" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Task Together"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/PoppinsMedium"
+            android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="28dp"/>
+            android:textSize="28sp" />
 
         <TextView
             android:layout_width="260dp"
-            android:textAlignment="center"
             android:layout_height="wrap_content"
-            android:text="Compartilhe tarefas e alarmes com outros usuários"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:text="@string/app_slogan"
+            android:textAlignment="center"
             android:textColor="@color/gray2"
-            android:textSize="16dp"/>
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/form_label_login"
+            android:textSize="24sp"
+            android:textColor="@color/gray11"
+            android:fontFamily="@font/PoppinsRegular"
+            android:layout_marginBottom="32dp"/>
+
+        <EditText
+            android:id="@+id/edtLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/form_input"
+            android:hint="@string/form_hint_email"
+            android:autofillHints="emailAddress"
+            android:fontFamily="@font/PoppinsRegular"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/edtLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:background="@drawable/form_input"
+            android:hint="@string/form_hint_password"
+            android:fontFamily="@font/PoppinsRegular"
+            android:layout_marginBottom="32dp"
+            android:autofillHints="password"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary3"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Entrar" />
 
     </LinearLayout>
 

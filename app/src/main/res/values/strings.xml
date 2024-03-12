@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">TaskTogether</string>
+    <string name="app_name">Task Together</string>
+    <string name="app_slogan">Compartilhe tarefas e alarmes com outros usuários</string>
+    <string name="app_logo_description">Conjunto de alarmes tocando</string>
+    <string name="form_label_login">Login</string>
+    <string name="form_hint_email">Email</string>
+    <string name="form_hint_password">Senha</string>
 </resources>
