@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,16 +22,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:contentDescription="@string/app_logo_description"
-            android:src="@drawable/clockImg" />
+            android:contentDescription="@string/appLogoDescription"
+            android:src="@drawable/clock_img" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/PoppinsMedium"
-            android:text="@string/app_name"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/appName"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="@string/app_slogan"
+            android:text="@string/appSlogan"
             android:textAlignment="center"
             android:textColor="@color/gray2"
             android:textSize="16sp" />
@@ -47,9 +48,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,43 +60,73 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/form_label_login"
-            android:textSize="24sp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/formLabelLogin"
             android:textColor="@color/gray11"
-            android:fontFamily="@font/PoppinsRegular"
-            android:layout_marginBottom="32dp"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/edtLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/form_input"
-            android:hint="@string/form_hint_email"
+            android:layout_marginBottom="24dp"
             android:autofillHints="emailAddress"
-            android:fontFamily="@font/PoppinsRegular"
-            android:layout_marginBottom="24dp" />
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintEmail"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edtLoginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:background="@drawable/form_input"
-            android:hint="@string/form_hint_password"
-            android:fontFamily="@font/PoppinsRegular"
             android:layout_marginBottom="32dp"
-            android:autofillHints="password"/>
+            android:autofillHints="password"
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintPassword"
+            android:inputType="textPassword" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary3"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/primary4"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-            android:text="Entrar" />
+            android:text="@string/txtLoginButton"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtLinkCadastro"
+            android:textColor="@color/gray8"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_without_account"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="12dp"
+            android:text="Continuar sem conta"
+            android:textColor="@color/primary1"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowContinue"/>
 
     </LinearLayout>
 
