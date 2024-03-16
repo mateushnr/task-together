@@ -5,6 +5,9 @@
     <string name="formLabelLogin">Login</string>
     <string name="formHintEmail">Email</string>
     <string name="formHintPassword">Senha</string>
-    <string name="txtLoginButton">ENTRAR</string>
-    <string name="txtLinkCadastro">Cadastrar-se</string>
+    <string name="loginButton">ENTRAR</string>
+    <string name="linkSignUp">Cadastrar-se</string>
+    <string name="continueWithoutAccount">Continuar sem conta</string>
+    <string name="arrowContinueDescription">seta continuar sem logar</string>
+    <string name="arrowGoBackDescription">Voltar para o login</string>
 </resources>
