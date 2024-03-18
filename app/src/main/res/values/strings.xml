@@ -9,5 +9,12 @@
     <string name="linkSignUp">Cadastrar-se</string>
     <string name="continueWithoutAccount">Continuar sem conta</string>
     <string name="arrowContinueDescription">seta continuar sem logar</string>
+
+    <string name="signUpButton">FINALIZAR</string>
     <string name="arrowGoBackDescription">Voltar para o login</string>
+    <string name="singleClockDescription">Alarme Tocando</string>
+    <string name="formLabelSignUp">Cadastrar-se</string>
+    <string name="formHintName">Nome</string>
+    <string name="formHintPhone">Telefone</string>
+    <string name="backToLogin">Voltar para o início</string>
 </resources>
