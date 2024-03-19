@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyGroupsActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/groupTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/groupsTitle"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/ltvGroupList"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/box_layout"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/groupTitle"
+        app:layout_constraintTop_toBottomOf="@+id/groupTitle"
+        android:dividerHeight="16dp"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/emptyGroupList"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/box_layout"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/groupTitle"
+        app:layout_constraintTop_toBottomOf="@+id/groupTitle"
+        android:dividerHeight="16dp"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nenhum grupo criado ainda..."
+            android:textColor="@color/gray7"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreateGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="32dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_regular"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:padding="10dp"
+        android:text="@string/createGroupButton"
+        android:textColor="@color/gray9"
+        android:textSize="18sp"
+        app:icon="@drawable/icon_add"
+        app:iconGravity="textStart"
+        app:iconPadding="16dp"
+        app:iconSize="27dp"
+        app:iconTint="@color/gray7"
+        app:layout_constraintBottom_toTopOf="@+id/primaryNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/white"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/primaryNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_navigation"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="4dp"
+        app:chainUseRtl="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnNavGroups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="@string/navGroups"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_group_user"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavNotification"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/gray1"/>
+
+        <TextView
+            android:id="@+id/txvGroupsUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toStartOf="@+id/txvNotificationUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnNavNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingVertical="0dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/navNotification"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_notification_bell"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavProfile"
+            app:layout_constraintStart_toEndOf="@+id/btnNavGroups"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvNotificationUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toStartOf="@+id/txvProfileUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvGroupsUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintVertical_bias="1.0"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnNavProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/navProfile"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_user"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnNavNotification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvProfileUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvNotificationUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintVertical_bias="0.0"
+            android:visibility="invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
