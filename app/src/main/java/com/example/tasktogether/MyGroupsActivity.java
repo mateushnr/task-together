@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Arrays;
 
 import ListAdapter.GroupArrayAdapter;
@@ -23,6 +21,7 @@ public class MyGroupsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_groups);
+
 
         ListView ltvGroupList = findViewById(R.id.ltvGroupList);
         ltvGroupList.setEmptyView(findViewById(R.id.emptyGroupList));
@@ -58,5 +57,13 @@ public class MyGroupsActivity extends AppCompatActivity {
 
         txvGroupUnderline.setVisibility(View.VISIBLE);
         btnNavGroup.setTextColor(getResources().getColor(R.color.primary4));
+
+        Intent intentNotification = new Intent(this, MyNotificationActivity.class);
+        btnNavNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intentNotification);
+            }
+        });
     }
 }
