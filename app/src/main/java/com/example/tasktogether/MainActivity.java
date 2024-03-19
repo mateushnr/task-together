@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import validation.FormValidation;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btnLogin);
 
         TextView txvLinkSignUp = findViewById(R.id.txvLinkSignUp);
+        LinearLayout btnContinueWithoutLogin = findViewById(R.id.btnContinueWithoutLogin);
 
-        Intent intent = new Intent(this, SignUpActivity.class);
+        Intent intentSignUp = new Intent(this, SignUpActivity.class);
+        Intent intentMyGroups = new Intent(this, MyGroupsActivity.class);
 
         btnLogin.setOnClickListener(v -> {
             boolean isValid = true;
@@ -62,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        txvLinkSignUp.setOnClickListener(v -> startActivity(intent));
+        txvLinkSignUp.setOnClickListener(v -> startActivity(intentSignUp));
+        btnContinueWithoutLogin.setOnClickListener(v -> startActivity(intentMyGroups));
 
     }
 }

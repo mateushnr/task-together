@@ -1,20 +1,27 @@
 <resources>
-    <string name="appName">Task Together</string>
-    <string name="appSlogan">Compartilhe tarefas e alarmes com outros usuários</string>
-    <string name="appLogoDescription">Conjunto de alarmes tocando</string>
-    <string name="formLabelLogin">Login</string>
-    <string name="formHintEmail">Email</string>
-    <string name="formHintPassword">Senha</string>
-    <string name="loginButton">ENTRAR</string>
-    <string name="linkSignUp">Cadastrar-se</string>
-    <string name="continueWithoutAccount">Continuar sem conta</string>
-    <string name="arrowContinueDescription">seta continuar sem logar</string>
+    <string name="appName" translatable="false">Task Together</string>
+    <string name="appSlogan">Share tasks and alarms with other users</string>
+    <string name="appLogoDescription">Three alarms ringing</string>
+    <string name="formLabelLogin" translatable="false">Login</string>
+    <string name="formHintEmail" translatable="false">Email</string>
+    <string name="formHintPassword">Password</string>
+    <string name="loginButton">ENTER</string>
+    <string name="linkSignUp">Sign Up</string>
+    <string name="continueWithoutAccount">Continue without account</string>
+    <string name="arrowContinueDescription">arrow continue without login</string>
 
-    <string name="signUpButton">FINALIZAR</string>
-    <string name="arrowGoBackDescription">Voltar para o login</string>
-    <string name="singleClockDescription">Alarme Tocando</string>
-    <string name="formLabelSignUp">Cadastrar-se</string>
-    <string name="formHintName">Nome</string>
-    <string name="formHintPhone">Telefone</string>
-    <string name="backToLogin">Voltar para o início</string>
+    <string name="signUpButton">Finish</string>
+    <string name="arrowGoBackDescription">Go back to login</string>
+    <string name="singleClockDescription">Alarm ringing</string>
+    <string name="formLabelSignUp">Sign Up</string>
+    <string name="formHintName">Name</string>
+    <string name="formHintPhone">Phone</string>
+    <string name="backToLogin">Go back to login</string>
+
+    <string name="groupsTitle">My Groups</string>
+    <string name="createGroupButton">Create new group</string>
+    <string name="navGroups">Groups</string>
+    <string name="navNotification">Notifications</string>
+    <string name="navProfile">Profile</string>
+    <string name="groupIconDescription">Icon group of users</string>
 </resources>

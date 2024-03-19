@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appSlogan">Compartilhe tarefas e alarmes com outros usuários</string>
+    <string name="appLogoDescription">Três alarmes tocando</string>
+    <string name="formHintPassword">Senha</string>
+    <string name="loginButton">ENTRAR</string>
+    <string name="linkSignUp">Cadastrar-se</string>
+    <string name="continueWithoutAccount">Continuar sem conta</string>
+    <string name="arrowContinueDescription">"seta continuar sem "</string>
+    <string name="signUpButton">FINALIZAR</string>
+    <string name="arrowGoBackDescription">Voltar para o login</string>
+    <string name="singleClockDescription">Alarme tocando</string>
+    <string name="formLabelSignUp">Cadastrar-se</string>
+    <string name="formHintName">Nome</string>
+    <string name="formHintPhone">Telefone</string>
+    <string name="backToLogin">Voltar para o login</string>
+    <string name="groupsTitle">Meus Grupos</string>
+    <string name="createGroupButton">Criar novo grupo</string>
+    <string name="navGroups">Grupos</string>
+    <string name="navNotification">Notificações</string>
+    <string name="navProfile">Perfil</string>
+    <string name="groupIconDescription">Ícone grupo de usuários</string>
+</resources>

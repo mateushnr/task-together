@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TaskTogether"
         tools:targetApi="31">
         <activity
+            android:name=".GroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyGroupsActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
