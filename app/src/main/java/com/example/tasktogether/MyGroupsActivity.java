@@ -64,6 +64,9 @@ public class MyGroupsActivity extends AppCompatActivity {
 
         Button btnCreateGroup = findViewById(R.id.btnCreateGroup);
 
+        Intent intentCreateGroup = new Intent(this, CreateGroupActivity.class);
+        btnCreateGroup.setOnClickListener(v -> startActivity(intentCreateGroup));
+
         Button btnNavGroup = findViewById(R.id.btnNavGroups);
         Button btnNavNotification = findViewById(R.id.btnNavNotification);
         Button btnNavProfile = findViewById(R.id.btnNavProfile);

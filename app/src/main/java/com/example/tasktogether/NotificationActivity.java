@@ -58,6 +58,7 @@ public class NotificationActivity extends AppCompatActivity {
         Button btnNavProfile = findViewById(R.id.btnNavProfile);
 
         ImageButton imgButtonGoBack = findViewById(R.id.imgButtonGoBack);
+        imgButtonGoBack.setOnClickListener(v -> finish());
 
         TextView txvNotificationUnderline = findViewById(R.id.txvNotificationUnderline);
 
@@ -65,7 +66,6 @@ public class NotificationActivity extends AppCompatActivity {
         btnNavNotification.setTextColor(getResources().getColor(R.color.primary4));
 
         btnNavNotification.setOnClickListener(v -> finish());
-        imgButtonGoBack.setOnClickListener(v -> finish());
 
         Intent intentGroups= new Intent(this, MyGroupsActivity.class);
         btnNavGroup.setOnClickListener(v -> startActivity(intentGroups));
