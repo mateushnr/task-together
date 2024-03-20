@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/headerNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary4"
@@ -22,11 +22,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
+            android:id="@+id/imgButtonGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/primary4"
-            android:contentDescription="Botão voltar"
+            android:contentDescription="@string/btnGoBackDescription"
             android:src="@drawable/move_left" />
 
         <TextView
@@ -34,13 +35,13 @@
             android:layout_height="wrap_content"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
-            android:text="Notificações"
+            android:text="@string/notificationTitle"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgIconUser"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
@@ -49,31 +50,81 @@
         android:padding="8dp"
         android:src="@drawable/icon_user"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:tint="@color/primary3" />
+        app:layout_constraintTop_toBottomOf="@+id/headerNotification"
+        app:tint="@color/primary3"
+        android:contentDescription="@string/userIconDescription" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
-        android:text="Fulano"
         android:textColor="@color/gray10"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintStart_toEndOf="@+id/imgIconUser"
+        app:layout_constraintTop_toBottomOf="@+id/headerNotification" />
 
     <TextView
+        android:id="@+id/txvUserPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:text="18 99999-9999"
         android:textColor="@color/gray8"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/imgIconUser"
+        app:layout_constraintTop_toBottomOf="@+id/txvUserName" />
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/icon_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txvUserName"
+        app:layout_constraintTop_toBottomOf="@+id/headerNotification"
+        app:tint="@color/gray8"
+        android:contentDescription="@string/userIconDescription" />
+
+    <TextView
+        android:id="@+id/txvMessageNotification"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/gray9"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgIconUser" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/green1"
+        android:padding="0dp"
+        android:text="@string/btnAcceptInvite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvMessageNotification" />
+
+    <Button
+        android:id="@+id/btnRefuse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/red2"
+        android:padding="0dp"
+        android:text="@string/btnRefuseInvite"
+        app:layout_constraintStart_toEndOf="@+id/btnConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/txvMessageNotification" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/primaryNavigation"
@@ -186,6 +237,22 @@
             app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
             app:layout_constraintVertical_bias="0.0"
             android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/txvAmountNotification"
+            android:visibility="invisible"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="-70dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/circular_container"
+            android:backgroundTint="@color/orange2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/btnNavNotification"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

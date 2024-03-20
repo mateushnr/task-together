@@ -25,11 +25,20 @@ public class MyNotificationActivity extends AppCompatActivity {
         ListView ltvNotificationList = findViewById(R.id.ltvNotificationList);
         ltvNotificationList.setEmptyView(findViewById(R.id.emptyNotificationList));
 
+        TextView txvAmountNotification = findViewById(R.id.txvAmountNotification);
+        int amountNotification = 0;
+
         UserGroup[] userGroups = {
-                new UserGroup(1, 2,false, "pendente","Atividades Domésticas", "Mateus", "18 99999-9999"),
-                new UserGroup(1, 3,false,"pendente","Lazer", "Jorge", "18 98888-8888"),
-                new UserGroup(1, 4,false,"pendente","Compras do mês", "Lucas", "18 97777-7777"),
+                new UserGroup(1, 1,false, "pendente","Atividades Domésticas", "Mateus", "18 99999-9999"),
+                new UserGroup(1, 2,false,"pendente","Lazer", "Jorge", "18 98888-8888"),
+                new UserGroup(1, 3,false,"pendente","Compras do mês", "Lucas", "18 97777-7777"),
         };
+
+        amountNotification = userGroups.length;
+        if(amountNotification > 0){
+            txvAmountNotification.setText("" + amountNotification);
+            txvAmountNotification.setVisibility(View.VISIBLE);
+        }
 
         NotificationArrayAdapter adapter = new NotificationArrayAdapter(this, Arrays.asList(userGroups));
 
@@ -52,6 +61,11 @@ public class MyNotificationActivity extends AppCompatActivity {
 
         txvNotificationUnderline.setVisibility(View.VISIBLE);
         btnNavNotification.setTextColor(getResources().getColor(R.color.primary4));
+
+        btnNavNotification.setClickable(false);
+
+        Intent intentGroups= new Intent(this, MyGroupsActivity.class);
+        btnNavGroup.setOnClickListener(v -> startActivity(intentGroups));
 
     }
 }

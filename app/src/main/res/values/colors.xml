@@ -27,5 +27,7 @@
 
     <color name="orange1">#FFF2D9</color>
     <color name="orange2">#CA7007</color>
-    <color name="yellow1">#F7C646</color>CA7007
+    <color name="yellow1">#F7C646</color>
+
+    <color name="green1">#4AD747</color>
 </resources>
