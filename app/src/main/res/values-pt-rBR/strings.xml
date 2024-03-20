@@ -20,4 +20,12 @@
     <string name="navNotification">Notificações</string>
     <string name="navProfile">Perfil</string>
     <string name="groupIconDescription">Ícone grupo de usuários</string>
+    <string name="emptyGroup">Nenhum grupo criado ainda…</string>
+    <string name="emptyNotifications">Você não recebeu nenhuma notificação por enquanto</string>
+    <string name="btnGoBackDescription">Botão voltar para a seção anterior</string>
+    <string name="notificationTitle">Notificações</string>
+    <string name="userIconDescription">Seu ícone</string>
+    <string name="btnAcceptInvite">Aceitar</string>
+    <string name="btnRefuseInvite">Recusar</string>
+    <string name="groupInviteLabel">Convite de grupo</string>
 </resources>

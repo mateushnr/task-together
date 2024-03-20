@@ -118,7 +118,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="4dp"
             android:backgroundTint="@color/primary4"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -132,7 +132,8 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="48dp"
             android:text="@string/linkSignUp"
             android:textColor="@color/gray9"
             android:textSize="18sp" />

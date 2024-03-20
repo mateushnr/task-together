@@ -24,4 +24,14 @@
     <string name="navNotification">Notifications</string>
     <string name="navProfile">Profile</string>
     <string name="groupIconDescription">Icon group of users</string>
+
+    <string name="emptyGroup">No group has been create yet…</string>
+    <string name="emptyNotifications">No notification sent for now</string>
+
+    <string name="btnGoBackDescription">Button go back to previous section</string>
+    <string name="notificationTitle">Notifications</string>
+    <string name="userIconDescription">Your icon</string>
+    <string name="btnAcceptInvite">Accept</string>
+    <string name="btnRefuseInvite">Refuse</string>
+    <string name="groupInviteLabel">Group invite</string>
 </resources>
