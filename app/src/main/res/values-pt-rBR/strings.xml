@@ -13,7 +13,7 @@
     <string name="formLabelSignUp">Cadastrar-se</string>
     <string name="formHintName">Nome</string>
     <string name="formHintPhone">Telefone</string>
-    <string name="backToLogin">Voltar para o login</string>
+    <string name="backToLastPage">Voltar</string>
     <string name="groupsTitle">Meus Grupos</string>
     <string name="createGroupButton">Criar novo grupo</string>
     <string name="navGroups">Grupos</string>
@@ -28,4 +28,9 @@
     <string name="btnAcceptInvite">Aceitar</string>
     <string name="btnRefuseInvite">Recusar</string>
     <string name="groupInviteLabel">Convite de grupo</string>
+    <string name="profileTitle">Seu Perfil</string>
+    <string name="leaveButton">Sair</string>
+    <string name="warningNotLogged">Parece que você não está logado…</string>
+    <string name="disadvantagesNotLogged">Para criar grupos e dividir tarefas com outros participantes acesse sua conta ou crie uma agora mesmo</string>
+    <string name="hasAccountLink">Eu já tenho uma conta</string>
 </resources>

@@ -16,7 +16,7 @@
     <string name="formLabelSignUp">Sign Up</string>
     <string name="formHintName">Name</string>
     <string name="formHintPhone">Phone</string>
-    <string name="backToLogin">Go back to login</string>
+    <string name="backToLastPage">Go back</string>
 
     <string name="groupsTitle">My Groups</string>
     <string name="createGroupButton">Create new group</string>
@@ -34,4 +34,10 @@
     <string name="btnAcceptInvite">Accept</string>
     <string name="btnRefuseInvite">Refuse</string>
     <string name="groupInviteLabel">Group invite</string>
+
+    <string name="profileTitle">Your Profile</string>
+    <string name="leaveButton">Disconnect</string>
+    <string name="warningNotLogged">Seems like your not logged in…</string>
+    <string name="disadvantagesNotLogged">To create groups and share tasks with other users access your account or register now</string>
+    <string name="hasAccountLink">I already have an account</string>
 </resources>
