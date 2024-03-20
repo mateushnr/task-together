@@ -69,5 +69,8 @@ public class NotificationActivity extends AppCompatActivity {
 
         Intent intentGroups= new Intent(this, MyGroupsActivity.class);
         btnNavGroup.setOnClickListener(v -> startActivity(intentGroups));
+
+        Intent intentProfile = new Intent(this, ProfileActivity.class);
+        btnNavProfile.setOnClickListener(v -> startActivity(intentProfile));
     }
 }

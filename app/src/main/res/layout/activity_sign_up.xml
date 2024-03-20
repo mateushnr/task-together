@@ -183,7 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:text="@string/backToLogin"
+            android:text="@string/backToLastPage"
             android:textColor="@color/primary7"
             android:textSize="18sp" />
 

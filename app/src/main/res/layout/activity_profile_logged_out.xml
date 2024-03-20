@@ -5,128 +5,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
     android:background="@color/white">
 
-
-    <LinearLayout
-        android:id="@+id/headerNotification"
+    <TextView
+        android:id="@+id/profileTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary4"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="28dp"
-        android:paddingVertical="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/imgButtonGoBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/primary4"
-            android:contentDescription="@string/btnGoBackDescription"
-            android:src="@drawable/move_left" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elegantTextHeight="true"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/notificationTitle"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imgIconUser"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/circular_container"
-        android:padding="8dp"
-        android:src="@drawable/icon_user"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerNotification"
-        app:tint="@color/primary3"
-        android:contentDescription="@string/userIconDescription" />
-
-    <TextView
-        android:id="@+id/txvUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/gray10"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/imgIconUser"
-        app:layout_constraintTop_toBottomOf="@+id/headerNotification" />
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/profileTitle"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/txvUserPhone"
-        android:layout_width="wrap_content"
+        android:id="@+id/txvWarningNotLogged"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/gray8"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/imgIconUser"
-        app:layout_constraintTop_toBottomOf="@+id/txvUserName" />
-
-    <ImageView
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/icon_mail"
+        android:layout_marginEnd="24dp"
+        android:text="@string/warningNotLogged"
+        android:textColor="@color/gray7"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/txvUserName"
-        app:layout_constraintTop_toBottomOf="@+id/headerNotification"
-        app:tint="@color/gray8"
-        android:contentDescription="@string/userIconDescription" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileTitle" />
 
     <TextView
-        android:id="@+id/txvMessageNotification"
-        android:layout_width="0dp"
+        android:id="@+id/txvDisadvantagesNotLogged"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/disadvantagesNotLogged"
         android:textColor="@color/gray9"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgIconUser" />
+        app:layout_constraintTop_toBottomOf="@+id/txvWarningNotLogged" />
 
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="@color/green1"
-        android:padding="0dp"
-        android:text="@string/btnAcceptInvite"
-        android:elegantTextHeight="true"
+    <TextView
+        android:id="@+id/txvLinkLogin"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:text="@string/hasAccountLink"
+        android:textColor="@color/primary4"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvMessageNotification" />
+        app:layout_constraintTop_toBottomOf="@+id/txvDisadvantagesNotLogged" />
 
     <Button
-        android:id="@+id/btnRefuse"
+        android:id="@+id/btnLinkToSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="@color/red2"
-        android:padding="0dp"
-        android:text="@string/btnRefuseInvite"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvLinkLogin"
+        android:backgroundTint="@color/primary3"
+        android:text="@string/linkSignUp"
         android:elegantTextHeight="true"
-        app:layout_constraintStart_toEndOf="@+id/btnConfirm"
-        app:layout_constraintTop_toBottomOf="@+id/txvMessageNotification" />
+        android:textColor="@color/white"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/primaryNavigation"
@@ -181,15 +138,15 @@
             android:backgroundTint="@color/gray1"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
-            android:paddingVertical="0dp"
             android:paddingHorizontal="20dp"
+            android:paddingVertical="0dp"
             android:text="@string/navNotification"
             android:textColor="@color/primary2"
             app:icon="@drawable/icon_notification_bell"
             app:iconGravity="textTop"
             app:iconPadding="0dp"
             app:iconSize="28dp"
-            app:iconTint="@color/primary4"
+            app:iconTint="@color/primary2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnNavProfile"
             app:layout_constraintStart_toEndOf="@+id/btnNavGroups"
@@ -221,7 +178,7 @@
             app:iconGravity="textTop"
             app:iconPadding="0dp"
             app:iconSize="28dp"
-            app:iconTint="@color/primary2"
+            app:iconTint="@color/primary4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnNavNotification"
