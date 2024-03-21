@@ -1,32 +1,35 @@
 package ListAdapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tasktogether.CreateGroupActivity;
 import com.example.tasktogether.R;
 
 import java.util.List;
 
 import Interface.RemoveMemberListener;
-import Model.UserGroup;
+import Model.User;
 
-public class MemberArrayAdapter extends ArrayAdapter<UserGroup> {
+public class MemberArrayAdapter extends ArrayAdapter<User> {
     private final RemoveMemberListener listener;
     private LayoutInflater inflater;
 
-    public MemberArrayAdapter(Activity activity, List<UserGroup> items, RemoveMemberListener listener){
+    public MemberArrayAdapter(Activity activity, List<User> items, RemoveMemberListener listener){
         super(activity, R.layout.item_member_group, items);
         this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.listener = listener;
     }
 
+    @SuppressLint("UseCompatLoadingForColorStateLists")
     public View getView(int position, View row, ViewGroup parent) {
         MemberArrayAdapter.ViewHolder holder;
         if (row == null) {
@@ -39,10 +42,10 @@ public class MemberArrayAdapter extends ArrayAdapter<UserGroup> {
         } else {
             holder = (MemberArrayAdapter.ViewHolder) row.getTag();
         }
-        UserGroup ug = getItem(position);
-        holder.memberUsername.setText(ug.getUserName());
+        User u = getItem(position);
+        holder.memberUsername.setText(u.getName());
         holder.btnRemoveMember.setOnClickListener(v -> {
-            listener.onRemoveMember(ug.getIdUser()); // Call onRemoveMember
+            listener.removeMember(u.getIdUser());
         });
 
         return row;

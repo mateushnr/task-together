@@ -149,7 +149,7 @@
             android:fontFamily="@font/poppins_regular"
             android:paddingVertical="0dp"
             android:paddingHorizontal="20dp"
-            android:text="@string/navNotification"
+            android:text="@string/notifications"
             android:textColor="@color/primary2"
             app:icon="@drawable/icon_notification_bell"
             app:iconGravity="textTop"

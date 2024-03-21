@@ -7,9 +7,11 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,34 +20,33 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Interface.RemoveMemberListener;
 import ListAdapter.MemberArrayAdapter;
-import Model.UserGroup;
+import Model.User;
 import validation.FormValidation;
 
 public class CreateGroupActivity extends AppCompatActivity implements RemoveMemberListener {
 
-    List<UserGroup> membersGroup = new ArrayList<UserGroup>();
+    ArrayList<Integer> membersUsersId;
+    List<User> membersGroup;
+    List<User> users;
     ListView ltvMemberGroupList;
-
+    private boolean loggedIn = true;
+    Dialog dialog;
+    ImageButton btnDialogCancel;
 
     ActivityResultLauncher<Intent> activityLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
 
-            System.out.println("---" + "testOn result");
-
-            if(result.getResultCode() == 78){
-                Intent intentresult = result.getData();
-                ArrayList<Integer> updatedUserIds = intentresult.getIntegerArrayListExtra("userIds");
-                System.out.println("---" + updatedUserIds);
+            if(result.getResultCode() == 1){
+                Intent intentResult = result.getData();
+                membersUsersId = intentResult.getIntegerArrayListExtra("userIds");
+                updateMembers();
             }
-
-            // Update your membersGroup list with the updated userIds (optional)
-            // ...
         }
-
     });
 
     @Override
@@ -53,9 +54,28 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
 
-        membersGroup.add(new UserGroup(1, 1, false, "pendente","Atividades Domésticas", "Mateus", "18 99999-9999"));
-        membersGroup.add(new UserGroup(2, 2,false,"pendente","Lazer", "Jorge", "18 98888-8888"));
-        membersGroup.add(new UserGroup(3, 3,false,"pendente","Compras do mês", "Lucas", "18 97777-7777"));
+        dialog = new Dialog(CreateGroupActivity.this);
+        dialog.setContentView(R.layout.dialog_logged_out_warning);
+        Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        btnDialogCancel = dialog.findViewById(R.id.btnCloseDialog);
+
+        btnDialogCancel.setOnClickListener(v -> dialog.dismiss());
+
+        users = new ArrayList<User>();
+        membersGroup = new ArrayList<User>();
+        membersUsersId = new ArrayList<Integer>();
+
+        users.add(new User(1, "Mateus", null,null, "18 99999-9999"));
+        users.add(new User(2, "Jorge",null,null, "18 98888-8888"));
+        users.add(new User(3, "Lucas",null,null, "18 97777-7777"));
+        users.add(new User(4, "Leticia",null,null, "18 97777-6666"));
+        users.add(new User(5, "Fernando",null,null, "18 95555-5555"));
+        users.add(new User(6, "Pedro",null,null, "18 94444-4444"));
+        users.add(new User(7, "Amanda",null,null, "18 94444-3333"));
+        users.add(new User(8, "Helena",null,null, "18 95555-2222"));
+        users.add(new User(9, "Maria",null,null, "18 99999-1111"));
+
 
         ltvMemberGroupList = findViewById(R.id.ltvMemberGroupList);
         ltvMemberGroupList.setEmptyView(findViewById(R.id.emptyMemberGroupList));
@@ -75,14 +95,14 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
         Button btnAddMember = findViewById(R.id.btnAddMember);
 
         btnAddMember.setOnClickListener(v -> {
-            Intent intentAddMember = new Intent(getBaseContext(), SearchUserActivity.class);
-            ArrayList<Integer> userIds = new ArrayList<>();
+            if(loggedIn){
+                Intent intentAddMember = new Intent(getBaseContext(), SearchUserActivity.class);
 
-            for (UserGroup userGroup : membersGroup) {
-                userIds.add(userGroup.getIdUser());
+                intentAddMember.putIntegerArrayListExtra("userIds", membersUsersId);
+                activityLauncher.launch(intentAddMember);
+            }else{
+                dialog.show();
             }
-            intentAddMember.putIntegerArrayListExtra("userIds", userIds);
-            activityLauncher.launch(intentAddMember);
         });
 
         Button btnCreateGroupConfirm = findViewById(R.id.btnCreateGroupConfirm);
@@ -123,19 +143,35 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
 
     }
 
-    public void removeMember(int idUser){
-        for (int i = membersGroup.size() - 1; i >= 0; i--) {
-            UserGroup userGroup = membersGroup.get(i);
-            if (userGroup.getIdUser() == idUser) {
-                membersGroup.remove(i);
-                break;
+    private void updateMembers() {
+        membersGroup.clear();
+
+        if (membersUsersId != null && membersUsersId.size() > 0) {
+            for (Integer userId : membersUsersId) {
+                for (User user : users) {
+                    if (user.getIdUser() == userId) {
+                        membersGroup.add(user);
+                        break;
+                    }
+                }
             }
         }
+
+        ((MemberArrayAdapter) ltvMemberGroupList.getAdapter()).notifyDataSetChanged();
     }
 
     @Override
-    public void onRemoveMember(int idUser) {
-        removeMember(idUser);
+    public void removeMember(int idUserToDelete) {
+
+        for(int i = 0; i < membersUsersId.size(); i++){
+            int currentUserId = membersUsersId.get(i);
+            if(currentUserId == idUserToDelete){
+                membersUsersId.remove(i);
+                updateMembers();
+                break;
+            }
+        }
+
         ((MemberArrayAdapter) ltvMemberGroupList.getAdapter()).notifyDataSetChanged();
     }
 }

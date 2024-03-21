@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/primary4"
-            android:contentDescription="@string/btnGoBackDescription"
+            android:contentDescription="@string/btnTextGoBackDescription"
             android:src="@drawable/move_left" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
-            android:text="Criando um grupo"
+            android:text="@string/titleCreatingGroup"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
@@ -49,7 +49,7 @@
         android:layout_marginEnd="24dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_medium"
-        android:text="Dados do Grupo"
+        android:text="@string/dataGroup"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,15 +75,17 @@
             android:id="@+id/edtGroupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome do grupo"
+            android:hint="@string/hintGroupName"
             android:textColorHint="@color/gray7"
             android:inputType="text"
             android:background="@drawable/box_layout"
             android:backgroundTint="@color/white"
-            android:padding="12dp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="13dp"
             android:textSize="16sp"
             android:textColor="@color/gray9"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:autofillHints="name"/>
 
         <TextView
             android:id="@+id/txvErrorGroupName"
@@ -98,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:gravity="start"
-            android:hint="Descreva para o que é esse grupo"
+            android:hint="@string/hintGroupDescription"
             android:textColorHint="@color/gray7"
             android:inputType="textMultiLine"
             android:background="@drawable/box_layout"
@@ -106,7 +108,8 @@
             android:textColor="@color/gray9"
             android:textSize="16sp"
             android:padding="12dp"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:autofillHints="name"/>
 
         <TextView
             android:id="@+id/txvErrorGroupDescription"
@@ -125,7 +128,7 @@
         android:layout_marginEnd="24dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_medium"
-        android:text="Participantes do Grupo"
+        android:text="@string/groupMembers"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
-                android:text="Você"
+                android:text="@string/you"
                 android:textColor="@color/gray8"
                 android:textSize="16sp" />
 
@@ -186,7 +189,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
-                android:text="Adicionar membro"
+                android:text="@string/addGroupMember"
                 android:textColor="@color/primary5"
                 android:textSize="14sp"
                 app:icon="@drawable/icon_add"
@@ -220,7 +223,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nenhum usuário será convidado"
+                android:text="@string/emptyGroupMembersToInvite"
                 android:textSize="16sp"
                 android:textColor="@color/gray7"/>
         </LinearLayout>
@@ -239,7 +242,7 @@
         android:fontFamily="@font/poppins_regular"
         android:paddingHorizontal="24dp"
         android:paddingVertical="12dp"
-        android:text="Criar grupo"
+        android:text="@string/btnCreateGroup"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:icon="@drawable/icon_add"
@@ -249,7 +252,5 @@
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
