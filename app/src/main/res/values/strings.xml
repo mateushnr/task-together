@@ -1,3 +1,58 @@
 <resources>
-    <string name="app_name">TaskTogether</string>
+    <string name="appName" translatable="false">Task Together</string>
+    <string name="appSlogan">Share tasks and alarms with other users</string>
+    <string name="appLogoDescription">Three alarms ringing</string>
+    <string name="formLabelLogin" translatable="false">Login</string>
+    <string name="formHintEmail" translatable="false">Email</string>
+    <string name="formHintPassword">Password</string>
+    <string name="loginButton">ENTER</string>
+    <string name="linkSignUp">Sign Up</string>
+    <string name="continueWithoutAccount">Continue without account</string>
+    <string name="arrowContinueDescription">arrow continue without login</string>
+
+    <string name="signUpButton">Finish</string>
+    <string name="arrowGoBackDescription">Go back to login</string>
+    <string name="singleClockDescription">Alarm ringing</string>
+    <string name="formLabelSignUp">Sign Up</string>
+    <string name="formHintName">Name</string>
+    <string name="formHintPhone">Phone</string>
+    <string name="backToLastPage">Go back</string>
+
+    <string name="groupsTitle">My Groups</string>
+    <string name="createGroupButton">Create new group</string>
+    <string name="navGroups">Groups</string>
+    <string name="notifications">Notifications</string>
+    <string name="navProfile">Profile</string>
+    <string name="groupIconDescription">Icon group of users</string>
+
+    <string name="emptyGroup">No group has been create yet…</string>
+    <string name="emptyNotifications">No notification sent for now</string>
+
+    <string name="btnTextGoBackDescription">Button go back to previous section</string>
+    <string name="userIconDescription">Your icon</string>
+    <string name="btnAcceptInvite">Accept</string>
+    <string name="btnRefuseInvite">Refuse</string>
+    <string name="groupInviteLabel">Group invite</string>
+
+    <string name="profileTitle">Your Profile</string>
+    <string name="leaveButton">Disconnect</string>
+    <string name="warningNotLogged">Seems like your not logged in…</string>
+    <string name="disadvantagesNotLogged">To create groups and share tasks with other users access your account or register now</string>
+    <string name="hasAccountLink">I already have an account</string>
+
+    <string name="titleCreatingGroup">Creating group</string>
+    <string name="dataGroup">Group Data</string>
+    <string name="hintGroupName">Group name</string>
+    <string name="hintGroupDescription">Describe what is this group</string>
+    <string name="groupMembers">Group members</string>
+    <string name="you">You</string>
+    <string name="addGroupMember">Add group member</string>
+    <string name="emptyGroupMembersToInvite">No user will be invited</string>
+    <string name="btnCreateGroup">Create group</string>
+    <string name="search">Search…</string>
+    <string name="searchTip">Search for the user\'s phone number which you want to add</string>
+    <string name="closeWarning">Close warning</string>
+    <string name="messageWarning">To add a member you must be logged in</string>
+    <string name="buttonRemoveMemberDescription">Button remove group member</string>
+    <string name="buttonAddMemberDescription">Button add user to group</string>
 </resources>

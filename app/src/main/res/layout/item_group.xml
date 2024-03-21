@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="14dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:background="@drawable/item_group_container">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/icon_group_user"
+        android:contentDescription="@string/groupIconDescription"
+        android:id="@+id/imvAvatar"
+        android:background="@drawable/circular_container"
+        app:tint="@color/gray3"
+        android:padding="14dp"
+        android:layout_marginEnd="8dp"/>
+
+    <TextView
+        android:id="@+id/txvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textColor="@color/white"/>
+
+</LinearLayout>

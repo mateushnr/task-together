@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/purple_gradient">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/single_clock_img"
+            android:contentDescription="@string/singleClockDescription"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="4"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/appName"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/formLabelSignUp"
+            android:textColor="@color/gray1"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/edtSignUpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintName"
+            android:inputType="text"
+            android:textColor="@color/gray8"
+            android:textColorHint="@color/gray6" />
+
+        <TextView
+            android:id="@+id/txvErrorSignUpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginBottom="12dp"
+            android:text=""
+            android:textColor="@color/red1"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/edtSignUpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="emailAddress"
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintEmail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/gray8"
+            android:textColorHint="@color/gray6" />
+
+        <TextView
+            android:id="@+id/txvErrorSignUpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginBottom="12dp"
+            android:text=""
+            android:textColor="@color/red1"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/edtSignUpPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="phone"
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintPhone"
+            android:inputType="phone"
+            android:textColor="@color/gray8"
+            android:textColorHint="@color/gray6"
+            android:maxLength="13"/>
+
+        <TextView
+            android:id="@+id/txvErrorSignUpPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginBottom="12dp"
+            android:text=""
+            android:textColor="@color/red1"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/edtSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="password"
+            android:background="@drawable/form_input"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/formHintPassword"
+            android:inputType="textPassword"
+            android:textColor="@color/gray8"
+            android:textColorHint="@color/gray6" />
+
+        <TextView
+            android:id="@+id/txvErrorSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginBottom="12dp"
+            android:text=""
+            android:textColor="@color/red1"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary1"
+            android:elevation="30dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/signUpButton"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnBackToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_back_login"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="end"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/backToLastPage"
+            android:textColor="@color/primary7"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/arrowGoBackDescription"
+            android:rotation="180"
+            android:scaleType="fitXY"
+            android:src="@drawable/arrow_dark" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
