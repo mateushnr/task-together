@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".NotificationActivity">
 
 
     <LinearLayout
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/primary4"
-            android:contentDescription="@string/btnGoBackDescription"
+            android:contentDescription="@string/btnTextGoBackDescription"
             android:src="@drawable/move_left" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/notificationTitle"
+            android:text="@string/notifications"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
@@ -183,7 +184,7 @@
             android:fontFamily="@font/poppins_regular"
             android:paddingVertical="0dp"
             android:paddingHorizontal="20dp"
-            android:text="@string/navNotification"
+            android:text="@string/notifications"
             android:textColor="@color/primary2"
             app:icon="@drawable/icon_notification_bell"
             app:iconGravity="textTop"

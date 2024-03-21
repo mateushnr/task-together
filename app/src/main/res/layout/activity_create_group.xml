@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".CreateGroupActivity">
+
+    <LinearLayout
+        android:id="@+id/headerNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary4"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgButtonGoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/primary4"
+            android:contentDescription="@string/btnTextGoBackDescription"
+            android:src="@drawable/move_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/titleCreatingGroup"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dataGroupTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/dataGroup"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerNotification" />
+
+    <LinearLayout
+        android:id="@+id/llDataGroupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/box_layout"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:backgroundTint="@color/gray2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataGroupTitle">
+
+        <EditText
+            android:id="@+id/edtGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintGroupName"
+            android:textColorHint="@color/gray7"
+            android:inputType="text"
+            android:background="@drawable/box_layout"
+            android:backgroundTint="@color/white"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="13dp"
+            android:textSize="16sp"
+            android:textColor="@color/gray9"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="name"/>
+
+        <TextView
+            android:id="@+id/txvErrorGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textColor="@color/red1"
+            android:layout_marginBottom="12dp"/>
+
+        <EditText
+            android:id="@+id/edtGroupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="start"
+            android:hint="@string/hintGroupDescription"
+            android:textColorHint="@color/gray7"
+            android:inputType="textMultiLine"
+            android:background="@drawable/box_layout"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/gray9"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginBottom="4dp"
+            android:autofillHints="name"/>
+
+        <TextView
+            android:id="@+id/txvErrorGroupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textColor="@color/red1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/membersGroupTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/groupMembers"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llDataGroupContainer" />
+
+    <LinearLayout
+        android:id="@+id/llMembersGroupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/box_layout"
+        android:backgroundTint="@color/gray2"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroupConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/membersGroupTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgIconUser"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/circular_container"
+                android:backgroundTint="@color/gray3"
+                android:contentDescription="@string/userIconDescription"
+                android:padding="8dp"
+                android:src="@drawable/icon_user"
+                app:tint="@color/primary4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="@string/you"
+                android:textColor="@color/gray8"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnAddMember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray2"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="@string/addGroupMember"
+                android:textColor="@color/primary5"
+                android:textSize="14sp"
+                app:icon="@drawable/icon_add"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconSize="20dp"
+                app:iconTint="@color/primary5" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/box_layout"
+            android:backgroundTint="@color/gray4"
+            android:layout_marginBottom="8dp"/>
+
+        <ListView
+            android:id="@+id/ltvMemberGroupList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="4dp"
+            android:background="@color/gray2"/>
+
+        <LinearLayout
+            android:id="@+id/emptyMemberGroupList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/emptyGroupMembersToInvite"
+                android:textSize="16sp"
+                android:textColor="@color/gray7"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCreateGroupConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary4"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_regular"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:text="@string/btnCreateGroup"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:icon="@drawable/icon_add"
+        app:iconGravity="textStart"
+        app:iconPadding="12dp"
+        app:iconSize="24dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

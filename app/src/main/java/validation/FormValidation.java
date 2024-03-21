@@ -1,9 +1,7 @@
 package validation;
 
 public class FormValidation {
-
     private static final String REGEX_EMAIL = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
-    private static final String MASCARA = "(xx) xxxxx-xxxx";
 
     public boolean isEmpty (String value){
         return value.trim().length() == 0;
