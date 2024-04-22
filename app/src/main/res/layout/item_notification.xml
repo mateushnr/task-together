@@ -40,5 +40,4 @@
         android:singleLine="true"
         android:textColor="@color/gray8"
         android:gravity="end"/>
-
 </LinearLayout>

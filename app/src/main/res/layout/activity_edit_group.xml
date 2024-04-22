@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".CreateGroupActivity">
+    tools:context=".EditGroupActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,20 +25,39 @@
             android:id="@+id/imgButtonGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/primary4"
             android:contentDescription="@string/btnTextGoBackDescription"
-            android:src="@drawable/move_left" />
+            android:src="@drawable/move_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/txvGroupName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:elegantTextHeight="true"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/titleCreatingGroup"
             android:textColor="@color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imgButtonGoBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvInfoEditingGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Editando dados do grupo"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/imgButtonGoBack"
+            app:layout_constraintTop_toBottomOf="@+id/txvGroupName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/dataGroupTitle"
@@ -148,7 +167,7 @@
         android:backgroundTint="@color/gray2"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroupConfirm"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditGroupConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,6 +178,19 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLeaveGroup"
+                android:layout_width="56dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/red2"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="0dp"
+                android:text="Sair"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"/>
 
             <ImageView
                 android:id="@+id/imgIconUser"
@@ -175,7 +207,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="10dp"
                 android:text="@string/you"
                 android:textColor="@color/gray8"
                 android:textSize="16sp" />
@@ -187,8 +219,8 @@
                 android:backgroundTint="@color/gray2"
                 android:elegantTextHeight="true"
                 android:fontFamily="@font/poppins_regular"
-                android:paddingHorizontal="6dp"
-                android:paddingVertical="6dp"
+                android:paddingHorizontal="4dp"
+                android:paddingVertical="0dp"
                 android:text="@string/addGroupMember"
                 android:textColor="@color/primary5"
                 android:textSize="12sp"
@@ -232,7 +264,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnCreateGroupConfirm"
+        android:id="@+id/btnEditGroupConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

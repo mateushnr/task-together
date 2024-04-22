@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -18,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +24,11 @@ import java.util.Objects;
 
 import Interface.RemoveMemberListener;
 import ListAdapter.MemberArrayAdapter;
-import Model.Group;
 import Model.User;
-import Model.UserGroup;
-import Model.dao.GroupDAO;
 import Model.dao.UserDAO;
-import Model.dao.UserGroupDAO;
 import validation.FormValidation;
 
-public class CreateGroupActivity extends AppCompatActivity implements RemoveMemberListener {
+public class EditGroupActivity extends AppCompatActivity implements RemoveMemberListener {
 
     private SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "userPref";
@@ -63,7 +57,7 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_group);
+        setContentView(R.layout.activity_edit_group);
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         String loggedUserEmail = sharedPreferences.getString(KEY_EMAIL, null);
@@ -72,7 +66,7 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
             loggedIn = true;
         }
 
-        dialog = new Dialog(CreateGroupActivity.this);
+        dialog = new Dialog(EditGroupActivity.this);
         dialog.setContentView(R.layout.dialog_logged_out_warning);
         Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -115,9 +109,9 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
             }
         });
 
-        Button btnCreateGroupConfirm = findViewById(R.id.btnCreateGroupConfirm);
+        Button btnEditGroupConfirm = findViewById(R.id.btnEditGroupConfirm);
 
-        btnCreateGroupConfirm.setOnClickListener(v -> {
+        btnEditGroupConfirm.setOnClickListener(v -> {
             boolean isValid = true;
             String errorMessage;
             FormValidation validator = new FormValidation();
@@ -148,55 +142,6 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
                 registerGroup(edtGroupName.getText().toString(), edtGroupDescription.getText().toString(), loggedUserEmail);
             }
         });
-
-    }
-
-    public void registerGroup(String group_name, String group_description, String ownerEmail){
-        UserDAO userDao = new UserDAO(this);
-        GroupDAO groupDao = new GroupDAO(this);
-        UserGroupDAO userGroupDao = new UserGroupDAO(this);
-
-        Group group = new Group();
-        group.setName(group_name);
-        group.setDescription(group_description);
-
-        if(ownerEmail == null){
-            group.setType("offline");
-
-            groupDao.insert(group);
-        }else{
-            group.setType("compartilhavel");
-
-            groupDao.insert(group);
-
-            UserGroup userGroupOwner = new UserGroup();
-            userGroupOwner.setIdGroup(groupDao.searchLatest().getIdGroup());
-            userGroupOwner.setIdUser(userDao.searchByEmail(ownerEmail).getIdUser());
-            userGroupOwner.setAccessLevel("Admin");
-            userGroupOwner.setStatusParticipation("Membro");
-
-            userGroupDao.insert(userGroupOwner);
-
-            if(!membersGroup.isEmpty()){
-                for (User member : membersGroup) {
-                    UserGroup userGroup = new UserGroup();
-
-                    userGroup.setIdGroup(groupDao.searchLatest().getIdGroup());
-                    userGroup.setIdUser(member.getIdUser());
-                    userGroup.setIdWhoInvited(userDao.searchByEmail(ownerEmail).getIdUser());
-                    userGroup.setAccessLevel("Membro");
-                    userGroup.setStatusParticipation("Pendente");
-
-                    userGroupDao.insert(userGroup);
-                }
-            }
-        }
-
-        Intent groupCreatedIntent = new Intent(this, MyGroupsActivity.class);
-        startActivity(groupCreatedIntent);
-
-        Toast.makeText(this, "Grupo criado com sucesso!",
-                Toast.LENGTH_LONG).show();
     }
 
     private void updateMembers() {

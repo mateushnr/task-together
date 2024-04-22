@@ -7,23 +7,328 @@
     android:layout_height="match_parent"
     tools:context=".GroupActivity">
 
-    <TextView
-        android:id="@+id/txvGroupName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerGroupInfo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:background="@color/primary4"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/txvGroupDescription"
+        <ImageButton
+            android:id="@+id/imgButtonGoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary4"
+            android:contentDescription="@string/btnTextGoBackDescription"
+            android:src="@drawable/move_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvGroupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgButtonGoBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imgButtonEdtGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_edit_icon"
+            android:contentDescription="@string/buttonEditGroupDescription"
+            android:padding="10dp"
+            android:src="@drawable/edit_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tabNavigationGroupTasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingHorizontal="6dp"
+        app:chainUseRtl="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerGroupInfo">
+
+        <Button
+            android:id="@+id/navAllTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="Todas"
+            android:textColor="@color/primary7"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/navPendingTasks"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvAllTasksUnderline"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:background="@color/primary4"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/txvPendingTasksUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navAllTasks" />
+
+        <Button
+            android:id="@+id/navPendingTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="Pendentes"
+            android:textColor="@color/gray7"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/navCompletedTasks"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/navAllTasks"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvPendingTasksUnderline"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:background="@color/primary4"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/txvCompletedTasksUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvAllTasksUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/navPendingTasks" />
+
+        <Button
+            android:id="@+id/navCompletedTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="Concluídas"
+            android:textColor="@color/gray7"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/navLateTasks"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/navPendingTasks"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvCompletedTasksUnderline"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:background="@color/primary4"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/txvLateTasksUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvPendingTasksUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/navCompletedTasks" />
+
+        <Button
+            android:id="@+id/navLateTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="Atrasadas"
+            android:textColor="@color/gray7"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/navCompletedTasks"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvLateTasksUnderline"
+            android:layout_width="80dp"
+            android:layout_height="3dp"
+            android:background="@color/primary4"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvCompletedTasksUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/navLateTasks" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnCreateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="TextView"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/primary4"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_regular"
+        android:insetTop="5dp"
+        android:insetBottom="5dp"
+        android:paddingHorizontal="12dp"
+        android:text="Nova tarefa"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:icon="@drawable/icon_add"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:iconSize="15dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/primaryNavigation"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/primaryNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_navigation"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="4dp"
+        app:chainUseRtl="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txvGroupName" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnNavGroups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:padding="0dp"
+            android:text="@string/navGroups"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_group_user"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavNotification"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/gray1"/>
+
+        <TextView
+            android:id="@+id/txvGroupsUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toStartOf="@+id/txvNotificationUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnNavNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingVertical="0dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/notifications"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_notification_bell"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnNavProfile"
+            app:layout_constraintStart_toEndOf="@+id/btnNavGroups"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvNotificationUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toStartOf="@+id/txvProfileUnderline"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvGroupsUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintVertical_bias="1.0"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btnNavProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray1"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/navProfile"
+            android:textColor="@color/primary2"
+            app:icon="@drawable/icon_user"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/primary2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnNavNotification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvProfileUnderline"
+            android:layout_width="88dp"
+            android:layout_height="4dp"
+            android:background="@color/primary4"
+            app:layout_constraintBottom_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txvNotificationUnderline"
+            app:layout_constraintTop_toBottomOf="@+id/btnNavGroups"
+            app:layout_constraintVertical_bias="0.0"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/txvAmountNotification"
+            android:visibility="invisible"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="-70dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/circular_container"
+            android:backgroundTint="@color/orange2"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/btnNavNotification"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

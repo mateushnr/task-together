@@ -55,4 +55,6 @@
     <string name="messageWarning">To add a member you must be logged in</string>
     <string name="buttonRemoveMemberDescription">Button remove group member</string>
     <string name="buttonAddMemberDescription">Button add user to group</string>
+
+    <string name="buttonEditGroupDescription">Button edit group</string>
 </resources>

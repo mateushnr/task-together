@@ -10,9 +10,14 @@ import android.widget.TextView;
 
 import com.example.tasktogether.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
+import Model.User;
 import Model.UserGroup;
+import Model.dao.UserDAO;
+import Model.dao.UserGroupDAO;
 
 public class NotificationArrayAdapter extends ArrayAdapter<UserGroup> {
     private LayoutInflater inflater;
@@ -32,8 +37,14 @@ public class NotificationArrayAdapter extends ArrayAdapter<UserGroup> {
         } else {
             holder = (NotificationArrayAdapter.ViewHolder) row.getTag();
         }
+
+        UserDAO userDao = new UserDAO(this.getContext());
+
         UserGroup ug = getItem(position);
-        holder.senderNumber.setText(ug.getUserPhone());
+        System.out.println("------" + ug.getIdUserGroup() + "------" + ug.getIdUser() + "------" + ug.getIdGroup() + "------" + ug.getIdWhoInvited());
+        User uSender = userDao.searchById(ug.getIdWhoInvited());
+
+        holder.senderNumber.setText(uSender.getPhone());
         return row;
     }
 
