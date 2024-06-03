@@ -1,23 +1,23 @@
 package Model;
 
 public class UserGroup {
+
+    private int idUserGroup;
     private int idUser;
     private int idGroup;
-    private boolean statusAdmin;
+    private int idWhoInvited;
+    private String accessLevel;
     private String statusParticipation;
-    private String groupName;
-    private String userName;
-    private String userPhone;
 
-    public UserGroup(int idUser, int idGroup, boolean statusAdmin, String statusParticipation, String groupName, String userName, String userPhone) {
-        this.idUser = idUser;
-        this.idGroup = idGroup;
-        this.statusAdmin = statusAdmin;
-        this.statusParticipation = statusParticipation;
-        this.groupName = groupName;
-        this.userName = userName;
-        this.userPhone = userPhone;
+    public int getIdUserGroup() {
+        return idUserGroup;
     }
+
+    public void setIdUserGroup(int idUserGroup) {
+        this.idUserGroup = idUserGroup;
+    }
+
+    public UserGroup() {}
 
     public int getIdUser() {
         return idUser;
@@ -35,12 +35,20 @@ public class UserGroup {
         this.idGroup = idGroup;
     }
 
-    public boolean isStatusAdmin() {
-        return statusAdmin;
+    public int getIdWhoInvited() {
+        return idWhoInvited;
     }
 
-    public void setStatusAdmin(boolean statusAdmin) {
-        this.statusAdmin = statusAdmin;
+    public void setIdWhoInvited(int idWhoInvited) {
+        this.idWhoInvited = idWhoInvited;
+    }
+
+    public String getAccessLevel() {
+        return accessLevel;
+    }
+
+    public void setAccessLevel(String accessLevel) {
+        this.accessLevel = accessLevel;
     }
 
     public String getStatusParticipation() {
@@ -49,29 +57,5 @@ public class UserGroup {
 
     public void setStatusParticipation(String statusParticipation) {
         this.statusParticipation = statusParticipation;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
     }
 }

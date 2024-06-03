@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".CreateGroupActivity">
+    tools:context=".EditTaskActivity">
 
     <LinearLayout
         android:id="@+id/headerNotification"
@@ -30,14 +30,32 @@
             android:contentDescription="@string/btnTextGoBackDescription"
             android:src="@drawable/move_left" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elegantTextHeight="true"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/titleCreatingGroup"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txvTaskToEditName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Criando uma tarefa"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Editando dados da tarefa"
+                android:textColor="@color/gray2"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <TextView
@@ -49,7 +67,7 @@
         android:layout_marginEnd="24dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/dataGroup"
+        android:text="Informações da tarefa"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +90,10 @@
         app:layout_constraintTop_toBottomOf="@+id/dataGroupTitle">
 
         <EditText
-            android:id="@+id/edtGroupName"
+            android:id="@+id/edtTaskName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintGroupName"
+            android:hint="Nome da tarefa"
             android:textColorHint="@color/gray7"
             android:inputType="text"
             android:background="@drawable/box_layout"
@@ -88,7 +106,7 @@
             android:autofillHints="name"/>
 
         <TextView
-            android:id="@+id/txvErrorGroupName"
+            android:id="@+id/txvErrorTaskName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
@@ -96,11 +114,11 @@
             android:layout_marginBottom="12dp"/>
 
         <EditText
-            android:id="@+id/edtGroupDescription"
+            android:id="@+id/edtTaskDescription"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="80dp"
             android:gravity="start"
-            android:hint="@string/hintGroupDescription"
+            android:hint="Descrição da tarefa..."
             android:textColorHint="@color/gray7"
             android:inputType="textMultiLine"
             android:background="@drawable/box_layout"
@@ -112,11 +130,62 @@
             android:autofillHints="name"/>
 
         <TextView
-            android:id="@+id/txvErrorGroupDescription"
+            android:id="@+id/txvErrorTaskDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/red1" />
+
+        <TextView
+            android:text="Data limite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray10"
+            android:textSize="18sp"
+            android:layout_marginBottom="4sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtTaskLimitDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="12dp"
+                android:autofillHints="name"
+                android:background="@drawable/box_layout"
+                android:backgroundTint="@color/white"
+                android:hint="DD/MM/YYYY"
+                android:inputType="date"
+                android:maxLength="10"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="13dp"
+                android:textColor="@color/gray9"
+                android:textColorHint="@color/gray7"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/imgBtnCalendarIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar_icon"
+                android:background="@drawable/circular_container"
+                android:backgroundTint="@color/primary1"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txvErrorTaskLimitDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
             android:textColor="@color/red1" />
+
     </LinearLayout>
 
     <TextView
@@ -128,7 +197,7 @@
         android:layout_marginEnd="24dp"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_medium"
-        android:text="@string/groupMembers"
+        android:text="Responsáveis pela tarefa"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +206,48 @@
         app:layout_constraintTop_toBottomOf="@+id/llDataGroupContainer" />
 
     <LinearLayout
-        android:id="@+id/llMembersGroupContainer"
+        android:id="@+id/llTaskResponsiblesContainerOffline"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/box_layout"
+        android:backgroundTint="@color/gray2"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/membersGroupTitle">
+
+        <ImageView
+            android:id="@+id/imgIconUser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/circular_container"
+            android:backgroundTint="@color/gray3"
+            android:contentDescription="@string/userIconDescription"
+            android:padding="8dp"
+            android:src="@drawable/icon_user"
+            app:tint="@color/primary4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="@string/you"
+            android:textColor="@color/gray8"
+            android:textSize="20sp"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTaskResponsiblesContainerOnline"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
@@ -148,7 +258,7 @@
         android:backgroundTint="@color/gray2"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroupConfirm"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateTask"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -160,28 +270,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imgIconUser"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="12dp"
-                android:background="@drawable/circular_container"
-                android:backgroundTint="@color/gray3"
-                android:contentDescription="@string/userIconDescription"
-                android:padding="8dp"
-                android:src="@drawable/icon_user"
-                app:tint="@color/primary4" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:text="@string/you"
-                android:textColor="@color/gray8"
-                android:textSize="16sp" />
-
             <Button
-                android:id="@+id/btnAddMember"
+                android:id="@+id/btnAddResponsible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray2"
@@ -189,13 +279,13 @@
                 android:fontFamily="@font/poppins_regular"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="6dp"
-                android:text="@string/addGroupMember"
+                android:text="Atribuir responsável"
                 android:textColor="@color/primary5"
                 android:textSize="12sp"
                 app:icon="@drawable/icon_add"
                 app:iconGravity="textStart"
-                app:iconPadding="12dp"
-                app:iconSize="8dp"
+                app:iconPadding="8dp"
+                app:iconSize="12dp"
                 app:iconTint="@color/primary5" />
         </LinearLayout>
 
@@ -208,14 +298,14 @@
             android:layout_marginBottom="8dp"/>
 
         <ListView
-            android:id="@+id/ltvMemberGroupList"
+            android:id="@+id/ltvTaskResponsibleList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/gray2"
             android:background="@color/gray2"/>
 
         <LinearLayout
-            android:id="@+id/emptyMemberGroupList"
+            android:id="@+id/emptyTaskResponsibleList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/gray2">
@@ -223,7 +313,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/emptyGroupMembersToInvite"
+                android:text="Nenhum usuário será responsável pela tarefa"
                 android:textSize="16sp"
                 android:textColor="@color/gray7"/>
         </LinearLayout>
@@ -232,7 +322,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnCreateGroupConfirm"
+        android:id="@+id/btnCreateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -242,14 +332,9 @@
         android:fontFamily="@font/poppins_regular"
         android:paddingHorizontal="24dp"
         android:paddingVertical="12dp"
-        android:text="@string/btnCreateGroup"
+        android:text="Confirmar e editar"
         android:textColor="@color/white"
-        android:textSize="18sp"
-        app:icon="@drawable/icon_add"
-        app:iconGravity="textStart"
-        app:iconPadding="12dp"
-        app:iconSize="24dp"
-        app:iconTint="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

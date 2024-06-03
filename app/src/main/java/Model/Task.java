@@ -1,17 +1,19 @@
 package Model;
 
-public class Group {
+public class Task {
+    private int idTask;
     private int idGroup;
     private String name;
     private String description;
-    private String type;
+    private String status;
+    private String limitDate;
 
-    public Group() {}
+    public int getIdTask() {
+        return idTask;
+    }
 
-    public Group(int idGroup, String name, String description) {
-        this.idGroup = idGroup;
-        this.name = name;
-        this.description = description;
+    public void setIdTask(int idTask) {
+        this.idTask = idTask;
     }
 
     public int getIdGroup() {
@@ -38,11 +40,19 @@ public class Group {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public String getStatus() {
+        return status;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getLimitDate() {
+        return limitDate;
+    }
+
+    public void setLimitDate(String limitDate) {
+        this.limitDate = limitDate;
     }
 }

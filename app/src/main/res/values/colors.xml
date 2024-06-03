@@ -24,10 +24,19 @@
 
     <color name="red1">#FF5858</color>
     <color name="red2">#EB6060</color>
+    <color name="light_red">#F8DDDD</color>
+    <color name="dark_red">#4A0C0C</color>
 
     <color name="orange1">#FFF2D9</color>
     <color name="orange2">#CA7007</color>
     <color name="yellow1">#F7C646</color>
+    <color name="light_yellow">#F8F4E3</color>
+    <color name="dark_yellow">#6A580C</color>
+
+    <color name="blue1">#2DA0E1</color>
 
     <color name="green1">#4AD747</color>
+    <color name="green2">#56BA45</color>
+    <color name="light_green">#F1F3DA</color>
+    <color name="dark_green">#43670D</color>
 </resources>

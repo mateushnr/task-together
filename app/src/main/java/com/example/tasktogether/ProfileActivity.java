@@ -3,24 +3,70 @@ package com.example.tasktogether;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import Model.UserGroup;
+import Model.dao.UserDAO;
+import Model.dao.UserGroupDAO;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "userPref";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONE = "phone";
     private boolean loggedIn = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+
+        String loggedUserEmail = sharedPreferences.getString(KEY_EMAIL, null);
+
+        if(loggedUserEmail != null){
+            loggedIn = true;
+        }
+
+        UserGroupDAO userGroupDao = new UserGroupDAO(this);
+        UserDAO userDao = new UserDAO(this);
+
         if(loggedIn){
             setContentView(R.layout.activity_profile);
 
+            Button btnLogout = findViewById(R.id.btnLogout);
+
+            TextView txvUserNameProfile = findViewById(R.id.txvUserNameProfile);
+            TextView txvUserEmailProfile = findViewById(R.id.txvUserEmailProfile);
+            TextView txvUserPhoneProfile = findViewById(R.id.txvUserPhoneProfile);
+
+            txvUserNameProfile.setText(sharedPreferences.getString(KEY_NAME, null));
+            txvUserEmailProfile.setText(sharedPreferences.getString(KEY_EMAIL, null));
+            txvUserPhoneProfile.setText(sharedPreferences.getString(KEY_PHONE, null));
+
+            btnLogout.setOnClickListener(v -> {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+
+                finish();
+
+                Intent intentLogout = new Intent(this, MainActivity.class);
+                startActivity(intentLogout);
+
+                Toast.makeText(this, "Deslogado com sucesso",
+                        Toast.LENGTH_LONG).show();
+            });
         }else{
             setContentView(R.layout.activity_profile_logged_out);
 
@@ -37,16 +83,16 @@ public class ProfileActivity extends AppCompatActivity {
         TextView txvAmountNotification = findViewById(R.id.txvAmountNotification);
         int amountNotification = 0;
 
-        UserGroup[] userGroups = {
-                new UserGroup(1, 1,false, "pendente","Atividades Domésticas", "Mateus", "18 99999-9999"),
-                new UserGroup(1, 2,false,"pendente","Lazer", "Jorge", "18 98888-8888"),
-                new UserGroup(1, 3,false,"pendente","Compras do mês", "Lucas", "18 97777-7777"),
-        };
+        List<UserGroup> userGroupsInvitations = new ArrayList<>();
 
-        amountNotification = userGroups.length;
-        if(amountNotification > 0){
-            txvAmountNotification.setText("" + amountNotification);
-            txvAmountNotification.setVisibility(View.VISIBLE);
+        if(loggedUserEmail != null){
+            userGroupsInvitations = userGroupDao.searchAllInvitations(userDao.searchByEmail(loggedUserEmail).getIdUser());
+
+            amountNotification = userGroupsInvitations.size();
+            if(amountNotification > 0){
+                txvAmountNotification.setText("" + amountNotification);
+                txvAmountNotification.setVisibility(View.VISIBLE);
+            }
         }
 
         Button btnNavGroup = findViewById(R.id.btnNavGroups);

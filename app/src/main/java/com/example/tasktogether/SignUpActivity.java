@@ -2,6 +2,8 @@ package com.example.tasktogether;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,16 +12,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import Model.User;
+import Model.dao.UserDAO;
 import validation.FormValidation;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private String lastCharEdtPhone = "";
+
+    private SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "userPref";
+
+    private static final String KEY_NAME = "name";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONE = "phone";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+
+        if(sharedPreferences.getString(KEY_EMAIL, null) != null){
+            Intent alreadyLoggedIntent = new Intent(this, MyGroupsActivity.class);
+            startActivity(alreadyLoggedIntent);
+        }
 
         EditText edtName = findViewById(R.id.edtSignUpName);
         EditText edtEmail = findViewById(R.id.edtSignUpEmail);
@@ -124,13 +144,50 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             if(isValid){
-                System.out.println("valido");
-            }else{
-                System.out.println("invalido");
+                registerUser(edtName.getText().toString(),
+                            edtEmail.getText().toString(),
+                            edtPhone.getText().toString(),
+                            edtPassword.getText().toString());
             }
         });
 
         btnBackToLogin.setOnClickListener(v -> finish());
 
+    }
+
+    public void registerUser(String user_name, String user_email, String user_phone, String user_password){
+        UserDAO userDao = new UserDAO(this);
+        User user = new User();
+
+        user.setName(user_name);
+        user.setEmail(user_email);
+        user.setPhone(user_phone);
+        user.setPassword(user_password);
+
+        if(userDao.searchByPhone(user_phone) != null && userDao.searchByEmail(user_email) != null){
+            Toast.makeText(this, "Telefone e email já cadastrado, tente um número e email diferente",
+                    Toast.LENGTH_LONG).show();
+        }else if(userDao.searchByPhone(user_phone) != null){
+            Toast.makeText(this, "Telefone já cadastrado, tente um número diferente",
+                    Toast.LENGTH_LONG).show();
+        }else if(userDao.searchByEmail(user_email) != null){
+            Toast.makeText(this, "Email já cadastrado, tente um email diferente",
+                    Toast.LENGTH_LONG).show();
+        }else{
+            userDao.insert(user);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_NAME, user_name);
+            editor.putString(KEY_EMAIL, user_email);
+            editor.putString(KEY_PHONE, user_phone);
+
+            editor.apply();
+
+            Intent loginFromSignUpIntent = new Intent(this, MyGroupsActivity.class);
+            startActivity(loginFromSignUpIntent);
+
+            Toast.makeText(this, "Cadastrado com sucesso",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }

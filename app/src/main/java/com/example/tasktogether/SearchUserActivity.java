@@ -2,6 +2,7 @@ package com.example.tasktogether;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,12 +12,20 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Interface.AddMemberListener;
 import ListAdapter.UserToInviteArrayAdapter;
 import Model.User;
+import Model.dao.UserDAO;
 
 public class SearchUserActivity extends AppCompatActivity implements AddMemberListener {
+    private SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "userPref";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PHONE = "phone";
+
     ArrayList<Integer> userIds;
     ListView ltvUserList;
     List<User> users;
@@ -28,18 +37,12 @@ public class SearchUserActivity extends AppCompatActivity implements AddMemberLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_user);
 
-        users = new ArrayList<User>();
-        filteredUsers = new ArrayList<User>();
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
-        users.add(new User(1, "Mateus", null,null, "18 99999-9999"));
-        users.add(new User(2, "Jorge",null,null, "18 98888-8888"));
-        users.add(new User(3, "Lucas",null,null, "18 97777-7777"));
-        users.add(new User(4, "Leticia",null,null, "18 97777-6666"));
-        users.add(new User(5, "Fernando",null,null, "18 95555-5555"));
-        users.add(new User(6, "Pedro",null,null, "18 94444-4444"));
-        users.add(new User(7, "Amanda",null,null, "18 94444-3333"));
-        users.add(new User(8, "Helena",null,null, "18 95555-2222"));
-        users.add(new User(9, "Maria",null,null, "18 99999-1111"));
+        UserDAO userDao = new UserDAO(this);
+
+        users = userDao.searchAll();
+        filteredUsers = new ArrayList<User>();
 
         ltvUserList = findViewById(R.id.ltvUserList);
         UserToInviteArrayAdapter adapter = new UserToInviteArrayAdapter(this, filteredUsers, this);
@@ -97,7 +100,7 @@ public class SearchUserActivity extends AppCompatActivity implements AddMemberLi
                             }
                         }
 
-                        if(user.getPhone() != null && userNotAdded && user.getPhone().contains(s.toString())){
+                        if(user.getPhone() != null && userNotAdded && user.getPhone().contains(s.toString()) && !Objects.equals(sharedPreferences.getString(KEY_PHONE, null), user.getPhone())){
                             filteredUsers.add(user);
                         }
                     }

@@ -5,95 +5,218 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyGroupsActivity"
-    android:background="@color/white">
+    tools:context=".TaskActivity">
 
-    <TextView
-        android:id="@+id/groupTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerGroupInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/groupsTitle"
-        android:textSize="24sp"
-        android:textColor="@color/black"
+        android:background="@color/primary4"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ListView
-        android:id="@+id/ltvGroupList"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/box_layout"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/groupTitle"
-        app:layout_constraintTop_toBottomOf="@+id/groupTitle"
-        android:dividerHeight="16dp"
-        android:divider="@color/gray1"
-        android:paddingVertical="16dp"
-        android:paddingHorizontal="16dp"/>
-
-    <LinearLayout
-        android:id="@+id/emptyGroupList"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/box_layout"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/groupTitle"
-        app:layout_constraintTop_toBottomOf="@+id/groupTitle"
-        android:dividerHeight="16dp"
-        android:paddingVertical="16dp"
-        android:paddingHorizontal="16dp">
-
-        <TextView
+        <ImageButton
+            android:id="@+id/imgButtonGoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/emptyGroup"
+            android:backgroundTint="@color/primary4"
+            android:contentDescription="@string/btnTextGoBackDescription"
+            android:src="@drawable/move_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvTaskName"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:elegantTextHeight="true"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/poppins_regular"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgButtonGoBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imgButtonEdtTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_edit_icon"
+            android:contentDescription="Botão editar tarefa"
+            android:padding="10dp"
+            android:src="@drawable/edit_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/txvInfoStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/box_layout"
+
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerGroupInfo" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerGroupInfo">
+
+        <ImageView
+            android:id="@+id/iconClockLimitTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:padding="0dp"
+            android:src="@drawable/clock_icon" />
+
+        <TextView
+            android:id="@+id/txvInfoLimitDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txvTaskDescriptionTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Descrição"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvInfoStatus" />
+
+    <TextView
+        android:id="@+id/txvTaskDescriptionInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/gray8"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTaskDescriptionTitle" />
+
+    <TextView
+        android:id="@+id/txvTaskResponsiblesTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Responsáveis pela tarefa"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTaskDescriptionInfo" />
+
+    <ListView
+        android:id="@+id/ltvTaskResponsibleList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/box_layout"
+        android:backgroundTint="@color/gray2"
+        android:divider="@color/gray2"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTaskResponsiblesTitle" />
+
+    <LinearLayout
+        android:id="@+id/emptyTaskResponsibleList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/box_layout"
+        android:backgroundTint="@color/gray2"
+        android:divider="@color/gray2"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTaskResponsiblesTitle">
+
+        <TextView
+            android:id="@+id/txvEmptyResponsibles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nenhum responsável pela tarefa"
             android:textColor="@color/gray7"
-            android:textSize="20sp"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnCreateGroup"
+        android:id="@+id/btnCompleteTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/green2"
         android:elegantTextHeight="true"
         android:fontFamily="@font/poppins_regular"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:padding="10dp"
-        android:text="@string/createGroupButton"
-        android:textColor="@color/gray9"
-        android:textSize="18sp"
-        app:icon="@drawable/icon_add"
-        app:iconGravity="textStart"
-        app:iconPadding="16dp"
-        app:iconSize="27dp"
-        app:iconTint="@color/gray7"
+        android:insetTop="5dp"
+        android:insetBottom="5dp"
+        android:paddingHorizontal="12dp"
+        android:text="Marcar como concluído"
+        android:textColor="@color/white"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/primaryNavigation"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/white"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDeleteTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/red2"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/poppins_regular"
+        android:insetTop="5dp"
+        android:insetBottom="5dp"
+        android:paddingHorizontal="12dp"
+        android:text="Excluir tarefa"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/primaryNavigation"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/primaryNavigation"
@@ -224,4 +347,6 @@
             tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

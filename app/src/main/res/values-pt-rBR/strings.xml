@@ -47,4 +47,5 @@
     <string name="messageWarning">Para adicionar um participante você deve estar logado!</string>
     <string name="buttonRemoveMemberDescription">Botão remover membro do grupo</string>
     <string name="buttonAddMemberDescription">Botão adicionar usuário ao grupo</string>
+    <string name="buttonEditGroupDescription">Botão editar grupo</string>
 </resources>
