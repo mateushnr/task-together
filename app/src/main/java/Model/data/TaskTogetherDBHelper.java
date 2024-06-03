@@ -42,6 +42,26 @@ public class TaskTogetherDBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY(" + UserGroupEntry.COLUMN_ID_GROUP + ") REFERENCES " + GroupEntry.TABLE_NAME + "(" + GroupEntry._ID + ")"
                 + ")";
         bd.execSQL(SQL_CREATE_USER_GROUP);
+
+        String SQL_CREATE_TASK = "CREATE TABLE " + TaskEntry.TABLE_NAME + "("
+                + TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + TaskEntry.COLUMN_ID_GROUP + " INTEGER NOT NULL, "
+                + TaskEntry.COLUMN_NAME + " TEXT NOT NULL, "
+                + TaskEntry.COLUMN_DESCRIPTION + " TEXT NOT NULL,"
+                + TaskEntry.COLUMN_STATUS + " TEXT NOT NULL,"
+                + TaskEntry.COLUMN_LIMIT_DATE + " TEXT NOT NULL,"
+                + "FOREIGN KEY(" + TaskEntry.COLUMN_ID_GROUP + ") REFERENCES " + GroupEntry.TABLE_NAME + "(" + GroupEntry._ID + ")"
+                + ")";
+        bd.execSQL(SQL_CREATE_TASK);
+
+        String SQL_CREATE_USER_TASK = "CREATE TABLE " + UserTaskEntry.TABLE_NAME + "("
+                + UserTaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + UserTaskEntry.COLUMN_ID_TASK + " INTEGER NOT NULL, "
+                + UserTaskEntry.COLUMN_ID_USER + " INTEGER NOT NULL, "
+                + "FOREIGN KEY(" + UserTaskEntry.COLUMN_ID_TASK + ") REFERENCES " + TaskEntry.TABLE_NAME + "(" + TaskEntry._ID + "),"
+                + "FOREIGN KEY(" + UserTaskEntry.COLUMN_ID_USER + ") REFERENCES " + UserEntry.TABLE_NAME + "(" + UserEntry._ID + ")"
+                + ")";
+        bd.execSQL(SQL_CREATE_USER_TASK);
     }
 
     @Override
@@ -54,6 +74,12 @@ public class TaskTogetherDBHelper extends SQLiteOpenHelper {
 
         String SQL_UPDATE_USER_GROUP = "DROP TABLE IF EXISTS " + UserGroupEntry.TABLE_NAME;
         bd.execSQL(SQL_UPDATE_USER_GROUP);
+
+        String SQL_UPDATE_TASK = "DROP TABLE IF EXISTS " + TaskEntry.TABLE_NAME;
+        bd.execSQL(SQL_UPDATE_TASK);
+
+        String SQL_UPDATE_USER_TASK = "DROP TABLE IF EXISTS " + UserTaskEntry.TABLE_NAME;
+        bd.execSQL(SQL_UPDATE_USER_TASK);
 
         onCreate(bd);
     }

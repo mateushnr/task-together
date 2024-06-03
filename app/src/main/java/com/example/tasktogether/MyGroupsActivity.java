@@ -82,11 +82,13 @@ public class MyGroupsActivity extends AppCompatActivity {
 
         ltvGroupList.setAdapter(adapter);
 
+        List<Group> finalGroups = groups;
         ltvGroupList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentGroupItem = new Intent(getBaseContext(), GroupActivity.class);
-                intentGroupItem.putExtra("position", position);
+                Group selectedGroup = finalGroups.get(position);
+                intentGroupItem.putExtra("selectedGroup", selectedGroup.getIdGroup());
                 startActivity(intentGroupItem);
             }
         });

@@ -167,10 +167,10 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
         }else{
             group.setType("compartilhavel");
 
-            groupDao.insert(group);
+            Group createdGroup = groupDao.insert(group);
 
             UserGroup userGroupOwner = new UserGroup();
-            userGroupOwner.setIdGroup(groupDao.searchLatest().getIdGroup());
+            userGroupOwner.setIdGroup(createdGroup.getIdGroup());
             userGroupOwner.setIdUser(userDao.searchByEmail(ownerEmail).getIdUser());
             userGroupOwner.setAccessLevel("Admin");
             userGroupOwner.setStatusParticipation("Membro");
@@ -181,7 +181,7 @@ public class CreateGroupActivity extends AppCompatActivity implements RemoveMemb
                 for (User member : membersGroup) {
                     UserGroup userGroup = new UserGroup();
 
-                    userGroup.setIdGroup(groupDao.searchLatest().getIdGroup());
+                    userGroup.setIdGroup(createdGroup.getIdGroup());
                     userGroup.setIdUser(member.getIdUser());
                     userGroup.setIdWhoInvited(userDao.searchByEmail(ownerEmail).getIdUser());
                     userGroup.setAccessLevel("Membro");

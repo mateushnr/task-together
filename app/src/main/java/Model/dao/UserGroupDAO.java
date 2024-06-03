@@ -173,6 +173,124 @@ public class UserGroupDAO {
         return userGroups;
     }
 
+    public ArrayList<UserGroup> searchAllByGroup(int idGroup) {
+        ArrayList<UserGroup> userGroups = new ArrayList<>();
+
+        String[] columns = {
+                UserGroupEntry._ID,
+                UserGroupEntry.COLUMN_ID_USER,
+                UserGroupEntry.COLUMN_ID_GROUP,
+                UserGroupEntry.COLUMN_ID_WHO_INVITED,
+                UserGroupEntry.COLUMN_ACCESS_LEVEL,
+                UserGroupEntry.COLUMN_STATUS_PARTICIPATION,
+        };
+
+        Cursor cursor = bd.query(UserGroupEntry.TABLE_NAME,
+                columns,
+                UserGroupEntry.COLUMN_ID_GROUP + " = ?",
+                new String[]{String.valueOf(idGroup)},
+                null,
+                null,
+                UserGroupEntry.COLUMN_ID_GROUP + " ASC");
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                UserGroup userGroup = new UserGroup();
+                userGroup.setIdUserGroup(cursor.getInt(0));
+                userGroup.setIdUser(cursor.getInt(1));
+                userGroup.setIdGroup(cursor.getInt(2));
+                userGroup.setIdWhoInvited(cursor.getInt(3));
+                userGroup.setAccessLevel(cursor.getString(4));
+                userGroup.setStatusParticipation(cursor.getString(5));
+
+                userGroups.add(userGroup);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+
+        return userGroups;
+    }
+
+    public ArrayList<UserGroup> searchAllByGroupWhereIsMember(int idGroup) {
+        ArrayList<UserGroup> userGroups = new ArrayList<>();
+
+        String[] columns = {
+                UserGroupEntry._ID,
+                UserGroupEntry.COLUMN_ID_USER,
+                UserGroupEntry.COLUMN_ID_GROUP,
+                UserGroupEntry.COLUMN_ID_WHO_INVITED,
+                UserGroupEntry.COLUMN_ACCESS_LEVEL,
+                UserGroupEntry.COLUMN_STATUS_PARTICIPATION,
+        };
+
+        Cursor cursor = bd.query(UserGroupEntry.TABLE_NAME,
+                columns,
+                UserGroupEntry.COLUMN_ID_GROUP + " = ? AND " + UserGroupEntry.COLUMN_STATUS_PARTICIPATION + " = ?",
+                new String[]{String.valueOf(idGroup), "Membro"},
+                null,
+                null,
+                UserGroupEntry.COLUMN_ID_GROUP + " ASC");
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                UserGroup userGroup = new UserGroup();
+                userGroup.setIdUserGroup(cursor.getInt(0));
+                userGroup.setIdUser(cursor.getInt(1));
+                userGroup.setIdGroup(cursor.getInt(2));
+                userGroup.setIdWhoInvited(cursor.getInt(3));
+                userGroup.setAccessLevel(cursor.getString(4));
+                userGroup.setStatusParticipation(cursor.getString(5));
+
+                userGroups.add(userGroup);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+
+        return userGroups;
+    }
+
+    public UserGroup searchByUserIdAndGroupId(int idUser, int idGroup) {
+        UserGroup userGroup = null;
+
+        String[] columns = {
+                UserGroupEntry._ID,
+                UserGroupEntry.COLUMN_ID_USER,
+                UserGroupEntry.COLUMN_ID_GROUP,
+                UserGroupEntry.COLUMN_ID_WHO_INVITED,
+                UserGroupEntry.COLUMN_ACCESS_LEVEL,
+                UserGroupEntry.COLUMN_STATUS_PARTICIPATION,
+        };
+
+        Cursor cursor = bd.query(UserGroupEntry.TABLE_NAME,
+                columns,
+                UserGroupEntry.COLUMN_ID_USER + " = ? AND " + UserGroupEntry.COLUMN_ID_GROUP + " = ?",
+                new String[]{String.valueOf(idUser), String.valueOf(idGroup)},
+                null,
+                null,
+                null);
+
+
+        if(cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            userGroup = new UserGroup();
+            userGroup.setIdUserGroup(cursor.getInt(0));
+            userGroup.setIdUser(cursor.getInt(1));
+            userGroup.setIdGroup(cursor.getInt(2));
+            userGroup.setIdWhoInvited(cursor.getInt(3));
+            userGroup.setAccessLevel(cursor.getString(4));
+            userGroup.setStatusParticipation(cursor.getString(5));
+        }
+
+        cursor.close();
+
+        return userGroup;
+    }
+
     public UserGroup searchById(int id) {
         UserGroup userGroup = null;
 

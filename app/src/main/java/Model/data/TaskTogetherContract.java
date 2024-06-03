@@ -30,4 +30,23 @@ public class TaskTogetherContract {
         public static final String COLUMN_ACCESS_LEVEL = "nivelAcesso";
         public static final String COLUMN_STATUS_PARTICIPATION = "statusParticipation";
     }
+
+    public static final class TaskEntry implements BaseColumns {
+        public static final String TABLE_NAME = "tarefa";
+
+        public static final String COLUMN_ID_GROUP = "idGrupo";
+
+        public static final String COLUMN_NAME = "nome";
+        public static final String COLUMN_DESCRIPTION = "descricao";
+        public static final String COLUMN_STATUS = "situacao";
+        public static final String COLUMN_LIMIT_DATE = "dataLimite";
+    }
+
+    public static final class UserTaskEntry implements BaseColumns {
+        public static final String TABLE_NAME = "usuario_has_task";
+
+        public static final String COLUMN_ID_TASK = "idTask";
+        public static final String COLUMN_ID_USER = "idUser";
+
+    }
 }

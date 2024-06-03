@@ -19,15 +19,17 @@ public class GroupDAO {
         bd = bdHelper.getWritableDatabase();
     }
 
-    public void insert(Group group) {
+    public Group insert(Group group) {
         ContentValues values = new ContentValues();
         values.put(GroupEntry.COLUMN_NAME, group.getName());
         values.put(GroupEntry.COLUMN_DESCRIPTION, group.getDescription());
         values.put(GroupEntry.COLUMN_TYPE, group.getType());
 
-        bd.insert(GroupEntry.TABLE_NAME,
+        long newRowId = bd.insert(GroupEntry.TABLE_NAME,
                 null,
                 values);
+
+        return searchById((int) newRowId);
     }
 
     public void edit(Group group) {
@@ -140,38 +142,6 @@ public class GroupDAO {
 
 
         if(cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            group = new Group();
-            group.setIdGroup(cursor.getInt(0));
-            group.setName(cursor.getString(1));
-            group.setDescription(cursor.getString(2));
-            group.setType(cursor.getString(3));
-        }
-
-        cursor.close();
-
-        return group;
-    }
-
-    public Group searchLatest() {
-        Group group = null;
-
-        String[] columns = {
-                GroupEntry._ID,
-                GroupEntry.COLUMN_NAME,
-                GroupEntry.COLUMN_DESCRIPTION,
-                GroupEntry.COLUMN_TYPE,
-        };
-
-        Cursor cursor = bd.query(GroupEntry.TABLE_NAME,
-                columns,
-                null,
-                null,
-                null,
-                null,
-                GroupEntry._ID + " DESC");
-
-        if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             group = new Group();
             group.setIdGroup(cursor.getInt(0));
